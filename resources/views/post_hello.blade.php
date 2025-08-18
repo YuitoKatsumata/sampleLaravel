@@ -2,12 +2,12 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Hello Form</title>
+    <title>POST Hello</title>
 </head>
 <body>
-    <h1>{{ $message ?? ''}}</h1>
+    <h1>{{ $message ?? '' }}</h1>
 
-    <form action="/query-hello" method="get">
+    <form action="/post-hello" method="post">
         @csrf
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" placeholder="Your name">
