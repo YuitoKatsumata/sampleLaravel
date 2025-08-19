@@ -9,13 +9,13 @@
 
     <form action="/post-hello" method="post">
         @csrf
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" placeholder="Your name">
+        <label for="name">名前:</label>
+        <input type="text" name="name" id="name">
 
-        <label for="age">Age:</label>
-        <input type="number" name="age" id="age" placeholder="Your age">
+        <label for="message">メッセージ:</label>
+        <input type="text" name="message" id="message">
 
-        <button type="submit">Say Hello</button>
+        <button type="submit">投稿する</button>
     </form>
 </body>
 </html>
