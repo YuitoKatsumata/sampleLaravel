@@ -2,13 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>POST Hello</title>
+    <title>新規投稿</title>
 </head>
 <body>
-    <h1>{{ $message ?? '' }}</h1>
+    <h1>新規投稿</h1>
 
-    <form action="/post-hello" method="post">
+    <form action="{{ route('posts.create') }}" method="post">
         @csrf
+
         <label for="name">名前:</label>
         <input type="text" name="name" id="name">
 
@@ -17,5 +18,7 @@
 
         <button type="submit">投稿する</button>
     </form>
+
+    <a href="{{ route('posts.index') }}"></a>
 </body>
 </html>
