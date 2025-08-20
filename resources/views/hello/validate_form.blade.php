@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>validate-hello</title>
+    <title>新規投稿</title>
 </head>
 <body>
-    <h1>入力フォーム</h1>
+    <h1>新規投稿</h1>
 
     @if ($errors->any())
         <div style="color: red;">
@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <form action="/validate-hello" method="post">
+    <form action="{{ route(posts.create) }}" method="post">
         @csrf
         <div>
             <label for="name">名前:</label>
