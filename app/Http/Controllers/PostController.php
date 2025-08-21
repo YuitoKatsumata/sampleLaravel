@@ -8,7 +8,7 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index() {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(3);
 
         return view('posts.index', compact('posts'));
     }
@@ -24,6 +24,12 @@ class PostController extends Controller
         ]);
 
         $post = Post::create($request->all());
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public'); // storage/app/public/images
+            $post->image = $path;
+            $post->save();
+        }
 
         return redirect()->route('posts.index')->with('success', '投稿しました！');
     }
@@ -52,6 +58,11 @@ class PostController extends Controller
         ]);
 
         $post = Post::findOrFail($request->id);
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public'); // storage/app/public/images
+            $post->image = $path;
+            $post->save();
+        }
         $post->update($request->only(['name', 'message']));
 
         return redirect()->route('posts.index')->with('success', '投稿を更新しました！');
